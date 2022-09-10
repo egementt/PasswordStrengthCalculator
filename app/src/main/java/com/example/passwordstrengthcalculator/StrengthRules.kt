@@ -2,16 +2,16 @@ package com.example.passwordstrengthcalculator
 
 class StrengthRules() {
 
-    fun anyLetterAndDigit(password: String): Boolean {
-        return password.any { c: Char ->  c.isDigit() && c.isLetter() }
-    }
-
-    fun validLength(password: String): Boolean {
-          return password.length >= 8
+    fun anyDigit(password: String): Boolean {
+        return password.any { c: Char ->  c.isDigit()}
     }
 
     fun anyUppercase(password: String): Boolean {
         return password.any{ c-> c.isUpperCase()}
+    }
+
+    fun anyLowerCase(password: String): Boolean{
+        return password.any { c -> c.isLowerCase() }
     }
 
 

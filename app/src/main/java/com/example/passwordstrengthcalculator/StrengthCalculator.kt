@@ -15,18 +15,15 @@ class StrengthCalculator() : TextWatcher{
 
 
      private fun calculateStrength(password: String) {
-        if (password.length in 0..7){
-            _score = 1
-        }else if(password.length in 7..14){
-            if (rules.anyUppercase(password) || rules.anyLetterAndDigit(password)){
-                _score = 2
-            }
-            if (rules.anyUppercase(password) && rules.anyLetterAndDigit(password)){
-                _score = 3
-            }
-        }else{
-            _score = 0
-        }
+         _score = if (password.length in 0..7){
+             1
+         }else if(password.length in 8..14){
+             if ((rules.anyUppercase(password) == rules.anyDigit(password) && rules.anyDigit(password) == rules.anyLowerCase(password))){
+                 3
+             }else 2
+         }else{
+             0
+         }
          measureStrength()
     }
 
